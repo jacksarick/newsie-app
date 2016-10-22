@@ -35,10 +35,13 @@ def application(request):
 		post = request.form
 
 		if path == "/data":
-			return Response(json.dumps(get_all_mail(post['user'] + "@newsie.club", post['pass'])))
+			if ("user" and "pass") in post:
+				return Response(json.dumps(get_all_mail(post['user'] + "@newsie.club", post['pass'])))
+			else:
+				return ["incorrect login"]
 
 		else:
-			"No data here"
+			return ["No data here"]
 
 	else:
 		return Response("You probably issued a GET request, probably by accident")
