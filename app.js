@@ -1,7 +1,7 @@
 var POP3Client = require("poplib");
 
 port = 995;
-host = "imap.gmail.com";
+host = "pop.gmail.com";
 user = "test@newsie.club";
 pass = "mypassword1";
 
