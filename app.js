@@ -44,7 +44,7 @@ client.on("login", function(status, rawdata) {
 
     } else {
 
-        console.log("LOGIN/PASS failed");
+        console.log(`LOGIN/PASS failed with ${user}/${pass}`);
         client.quit();
 
     }
