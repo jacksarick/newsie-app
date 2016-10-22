@@ -2,7 +2,7 @@ import json
 from gmail import Gmail
 from werkzeug.wrappers import Request, Response
 
-username, password = "test@newsie.club", "mypassword1"
+username, password = "test", "mypassword1"
 
 def rfetch(msg):
 	msg.fetch()
@@ -36,7 +36,7 @@ def application(request):
 		print request.form
 
 		if path == "/data":
-			return Response(json.dumps(get_all_mail(username, password)))
+			return Response(json.dumps(get_all_mail(username + "@newsie.club", password)))
 
 		else:
 			"No data here"
