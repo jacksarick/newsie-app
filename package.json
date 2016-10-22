@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jacksarick/newsie-app#readme",
   "dependencies": {
+    "imap": "^0.8.18",
     "imap-simple": "^2.0.0"
   }
 }
