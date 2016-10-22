@@ -1,4 +1,8 @@
+import json
 from gmail import Gmail
+from werkzeug.wrappers import Request, Response
+
+username, password = "test@newsie.club", "mypassword1"
 
 def rfetch(msg):
 	msg.fetch()
@@ -11,9 +15,19 @@ def rfetch(msg):
 		"id": msg.message_id
 	}
 
-g = Gmail()
-g.login("test@newsie.club", "mypassword1")
-print "connected"
-print [rfetch(m) for m in g.inbox().mail()]
-g.logout()
-print "bye"
+def get_all_mail(username, password):
+	g = Gmail()
+	g.login(username, password)
+	print "connected"
+	inbox = [rfetch(m) for m in g.inbox().mail()]
+	g.logout()
+	print "bye"
+	return inbox
+
+@Request.application
+def application(request):
+    return Response(json.dumps(get_all_mail(username, password)))
+
+if __name__ == '__main__':
+    from werkzeug.serving import run_simple
+    run_simple('localhost', 4000, application)
