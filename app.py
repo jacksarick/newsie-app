@@ -8,7 +8,7 @@ def rfetch(msg):
 		"sender": msg.fr,
 		"date": msg.sent_at.date().isoformat(),
 		"title": msg.subject,
-		"body": "body here, but for now test", #msg.body.replace("\r\n", "<br>")
+		"body": msg.body.replace("\r\n", "<br>"),
 		"read": msg.is_read(),
 		"id": msg.message_id
 	}
