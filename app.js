@@ -23,7 +23,7 @@ client.on("error", function(err) {
 client.on("connect", function() {
 
         console.log("CONNECT success");
-        client.login(username, password);
+        client.login(user, pass);
 
 });
 
