@@ -16,13 +16,17 @@ def rfetch(msg):
 	}
 
 def get_all_mail(username, password):
-	g = Gmail()
-	g.login(username, password)
-	print "connected"
-	inbox = [rfetch(m) for m in g.inbox().mail()]
-	g.logout()
-	print "bye"
-	return inbox
+	try:
+		g = Gmail()
+		g.login(username, password)
+		print "connected"
+		inbox = [rfetch(m) for m in g.inbox().mail()]
+		g.logout()
+		print "bye"
+		return inbox
+	except Exception as e:
+		raise e
+		return "['login failed']"
 
 @Request.application
 def application(request):
