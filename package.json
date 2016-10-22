@@ -1,0 +1,22 @@
+{
+  "name": "newsie-app",
+  "version": "1.0.0",
+  "description": "The backend for newsie!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksarick/newsie-app.git"
+  },
+  "author": "Jack Sarick & Nick OBrien",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacksarick/newsie-app/issues"
+  },
+  "homepage": "https://github.com/jacksarick/newsie-app#readme",
+  "dependencies": {
+    "imap-simple": "^2.0.0"
+  }
+}
