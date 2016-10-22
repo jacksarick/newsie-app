@@ -23,7 +23,7 @@ def get_all_mail(username, password):
 		print "bye"
 		return inbox
 	except Exception as e:
-		raise e
+		print e
 		return "['login failed']"
 
 @Request.application
