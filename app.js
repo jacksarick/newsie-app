@@ -1,36 +1,36 @@
-var imaps = require('imap-simple');
- 
-var config = {
-	imap: {
-		user: 'test@newsie.club',
-		password: 'mypassword1',
-		host: 'imap.gmail.com',
-		port: 993,
-		tls: true,
-		authTimeout: 3000
-	}
-};
- 
-imaps.connect(config).then(function (connection) {
- 
-	return connection.openBox('INBOX').then(function () {
-		var searchCriteria = [
-			'UNSEEN'
-		];
- 
-		var fetchOptions = {
-			bodies: ['HEADER', 'TEXT'],
-			markSeen: false
-		};
- 
-		return connection.search(searchCriteria, fetchOptions).then(function (results) {
-			var subjects = results.map(function (res) {
-				return res.parts.filter(function (part) {
-					return part.which === 'HEADER';
-				})[0].body.subject[0];
-			});
- 
-			console.log(subjects);
-		});
-	});
+ar POP3Client = require("poplib");
+
+port = 995;
+host = "imap.gmail.com";
+user = "test@newsie.club";
+pass = "mypassword1";
+
+var client = new POP3Client(port, host, {
+    tlserrs: false,
+    enabletls: true,
+    debug: false
+});
+
+client.on("error", function(err) {
+
+        if (err.errno === 111) console.log("Unable to connect to server");
+        else console.log("Server error occurred");
+
+        console.log(err);
+
+});
+
+client.on("connect", function() {
+
+        console.log("CONNECT success");
+        client.login(username, password);
+
+});
+
+client.on("invalid-state", function(cmd) {
+        console.log("Invalid state. You tried calling " + cmd);
+});
+
+client.on("locked", function(cmd) {
+        console.log("Current command has not finished yet. You tried calling " + cmd);
 });
