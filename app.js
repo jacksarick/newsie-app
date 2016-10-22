@@ -1,4 +1,4 @@
-ar POP3Client = require("poplib");
+var POP3Client = require("poplib");
 
 port = 995;
 host = "imap.gmail.com";
