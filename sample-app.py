@@ -30,12 +30,7 @@ def application(request):
 		path = request.path
 		print path
 		print request.form
-
-		if path == "/data":
-			return Response(json.dumps(get_all_mail(username, password)))
-
-		else:
-			"No data here"
+		return Response(json.dumps(get_all_mail(username, password)))
 
 	else:
 		return Response("You probably issued a GET request, probably by accident")
